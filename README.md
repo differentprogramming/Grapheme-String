@@ -31,7 +31,7 @@ So to summarize what these are like:
 2) Making substrings is instant, since substrings are shared.
 
 3) Sharing is done with reference counting which is fast because it's not thread safe (unless you change a line).
-a)Strings and their substrings should stay in the thread they were created in or else transfered all at once. 
+a) Strings and their substrings should stay in the thread they were created in or else be transfered all at once. 
 
 4) Strings are immutable but there is a string builder class.
 5) Strings are compatible with the standard library, with for each etc. There are iterators, comparisons and hashes.
