@@ -24,19 +24,6 @@ What are exposed as strings in this library are actually substrings, where whene
 
 This is a library for immutable strings. There is a GraphemeStringBuilder class for building new strings out of bits of existing ones.
 
-So to summarize what these are like:  
-
-1) Creating strings is slow, because they're indexed on creation.  They take up a lot of memory relative to utf8, because they have a UTF8 buffer and a UTF32 buffer and a grapheme index.
-
-2) Making substrings is instant, since substrings are shared.
-
-3) Sharing is done with reference counting which is fast because it's not thread safe (unless you change a line).
-a) Strings and their substrings should stay in the thread they were created in or else be transfered all at once. 
-
-4) Strings are immutable but there is a string builder class.
-5) Strings are compatible with the standard library, with for each etc. There are iterators, comparisons and hashes.
-6) The boost library is a dependency, but all other dependencies are included in the source.
-
 This version is for Windows and can convert windows 16 bit unicode. 
 Later I'll add Linux compatibility.
 
@@ -50,5 +37,16 @@ It has Julia's utf8proc library as a dependency. The latest version of that is i
 
 It has Bob Jenkins' spooky hash as a dependency, also included.
 
+So to summarize what these are like:  
 
+1) Creating strings is slow, because they're indexed on creation.  They take up a lot of memory relative to utf8, because they have a UTF8 buffer and a UTF32 buffer and a grapheme index.
+
+2) Making substrings is instant, since substrings are shared.
+
+3) Sharing is done with reference counting which is fast because it's not thread safe (unless you change a line).
+a) Strings and their substrings should stay in the thread they were created in or else be transfered all at once. 
+
+4) Strings are immutable but there is a string builder class.
+5) Strings are compatible with the standard library, with for each etc. There are iterators, comparisons and hashes.
+6) The boost library is a dependency, but all other dependencies are included in the source.
 
