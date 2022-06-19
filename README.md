@@ -24,7 +24,7 @@ Note this is a library for immutable strings. There is a GraphemeStringBuilder c
 This version is for Windows and can convert windows 16 bit unicode. 
 Later I'll add Linux compatibility.
 
-Output using streams assumes that you want UTF8 output. I realize that this isn't window's preference for display, but I assume that you're keeping your documents in utf8 form and displaying them another way.  Note that every string DOES HAVE an array of 32 bit Codepoints as well as a UTF8 buffer so you could output using those.
+Output using streams assumes that you want UTF8 output. I realize that this isn't window's preference for display, but I assume that you're keeping your documents in utf8 form and displaying them another way.  Note that every string DOES HAVE an array of 32 bit Codepoints as well as a UTF8 buffer so you could output using those. I didn't make output to streams use windows wchar because those are rather limited and the streams stop working if you output a character that isn't in the default code page - and if you need a grapheme library you're probably using characters that aren't in everyone's default codepage. 
 
 It also uses the Boost Library for reference counted sharing through the intrusive counter.  By default faster, not-thread safe reference counting is used, but you can change it to safe multi-thread reference counting with a one line change.
 
