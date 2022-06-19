@@ -39,7 +39,7 @@ It has Bob Jenkins' spooky hash as a dependency, also included.
 
 So to summarize what these are like:  
 
-1) Creating strings is slow, because they're indexed on creation.  They take up a lot of memory relative to utf8, because they have a UTF8 buffer and a UTF32 buffer and a grapheme index.
+1) Creating strings is slow, because they're indexed on creation.  They take up a lot of memory relative to utf8, because they have a UTF8 buffer and a UTF32 buffer and a grapheme index.  But unlike other libraries, every string can be indexed by graphemes, also by UTF32 codepoints or by UTF8 bytes.
 
 2) Making substrings is instant, since substrings are shared.
 
