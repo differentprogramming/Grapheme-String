@@ -35,6 +35,7 @@ a) Strings and their substrings should stay in the thread they were created in o
 
 4) Strings are immutable but there is a string builder class.
 5) Strings are compatible with the standard library, with for each etc. There are iterators, comparisons and hashes.
+6) The boost library is a dependency, but all other dependencies are included in the source.
 
 This version is for Windows and can convert windows 16 bit unicode. 
 Later I'll add Linux compatibility.
