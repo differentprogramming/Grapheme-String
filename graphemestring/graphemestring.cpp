@@ -9,9 +9,14 @@
 
 
 
+//*Sigh, I was forced to do my tests in a gui program because wcout stops working if you try to output any character to the console that isn't available on the default code page
+//So this test doesnt work
+
 #define DIS(n,m) wprintf (L"variable %ls = '%ls'\n", L#n,m);
 //<<n<<"'\n"
 //; for (auto a : n) std::wcout <<"'"<< a <<"'"<<'\n'
+
+
 
 int main()
 {

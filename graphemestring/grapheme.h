@@ -135,10 +135,17 @@ public:
 		if (i >= codepoint_length() || i < 0) return nullcodepoint;
 		return source->codepoint_buffer[i + codepoint_start_slice_index()];
 	}
-	const int32_t& grapheme_at(int i) const
+
+	const int32_t& grapheme_num_codepoints(int i) const
+	{
+		if (i >= grapheme_length() || i < 0) return 0;
+		return source->grapheme_to_codepoint_index[1 + i + grapheme_start_slice_index()] - source->grapheme_to_codepoint_index[i + grapheme_start_slice_index()];
+	}
+
+	const int32_t& grapheme_at(int i, int offset = 0) const
 	{
 		if (i >= grapheme_length() || i < 0) return nullcodepoint;
-		return source->codepoint_buffer[source->grapheme_to_codepoint_index[i + grapheme_start_slice_index()]];
+		return source->codepoint_buffer[offset + source->grapheme_to_codepoint_index[i + grapheme_start_slice_index()]];
 	}
 
 	GraphemeString slice(int from, int to = INT_MIN) const
