@@ -18,9 +18,24 @@ You can get substrings with slice.  Note that negative indexes index from the en
 
 Comparison operators, hashing are predefined, allowing use with standard library objects like map and unordered_map etc.
 
+Note, the way this works is that strings are broken up into graphemes on creation and indexed.  Due to pre-indexing, indexing aftwards is fast, but also strings are immutable. 
+
 What are exposed as strings in this library are actually substrings, where whenever you take a substring, the original string is maintained and the new substring just refers to it.  If you want to release a master string, then replace your substrings with deep copies (there's a deep_copy() function) and when there are no references left to the master string it will be automatically deleted.
 
-Note this is a library for immutable strings. There is a GraphemeStringBuilder class for building new strings out of bits of existing ones.
+This is a library for immutable strings. There is a GraphemeStringBuilder class for building new strings out of bits of existing ones.
+
+So to summarize what these are like:  
+
+1) Creating strings is slow, because they're indexed on creation.  They take up a lot of memory relative to utf8, because they have a UTF8 buffer and a UTF32 buffer and a grapheme index.
+
+2) Making substrings is instant, since substrings are shared.
+
+3) Sharing is done with reference counting which is fast because it's not thread safe (unless you change a line).
+a)Strings and their substrings should stay in the thread they were created in or else transfered all at once. 
+
+4) Strings are immutable but there is a string builder class.
+5) Strings are compatible with the standard library, with for each etc. There are iterators, comparisons and hashes.
+
 This version is for Windows and can convert windows 16 bit unicode. 
 Later I'll add Linux compatibility.
 
