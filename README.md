@@ -11,7 +11,7 @@ for(auto aGrapheme : aString) something << aGrapheme;
 
 There are reverse iterators, you could use:
 for (auto a = aString.rbegin(); a != aString.rend(); ++a) {
-    something << a;/**etc**/
+    something << a;/\*etc\*/
 }
 
 You can get substrings with slice.  Note that negative indexes index from the end. 
