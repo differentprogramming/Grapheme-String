@@ -12,7 +12,7 @@
 //*Sigh, I was forced to do my tests in a gui program because wcout stops working if you try to output any character to the console that isn't available on the default code page
 //So this test doesnt work
 
-#define DIS(n,m) wprintf (L"variable %ls = '%ls'\n", L#n,m);
+#define DIS(n) std::cout << "variable " << #n <<" = " << n << std::endl;
 //<<n<<"'\n"
 //; for (auto a : n) std::wcout <<"'"<< a <<"'"<<'\n'
 
@@ -20,7 +20,11 @@
 
 int main()
 {
-    _setmode(_fileno(stdout), _O_U16TEXT);
+    SetConsoleCP(CP_UTF8);
+    SetConsoleOutputCP(CP_UTF8);
+
+
+//    _setmode(_fileno(stdout), _O_U16TEXT);
     GraphemeString nye ( L"ñññññññ"),
         hindi ( L"अनुच्छेद"),
         emojis ( L"🌷🎁💩😜👍🏳️‍🌈"),
@@ -28,14 +32,14 @@ int main()
         korean ( L"뎌쉐"),
         zalgo ( L"Z͑ͫ̓ͪ̂ͫ̽͏̴̙̤̞͉͚̯̞̠͍A̴̵̜̰͔ͫ͗͢L̠ͨͧͩ͘G̴̻͈͍͔̹̑͗̎̅͛́Ǫ̵̹̻̝̳͂̌̌͘!͖̬̰̙̗̿̋ͥͥ̂ͣ̐́́͜͞");
 
-    std::wcout << L"Hello World!\n";
-    DIS(emojis, L"🌷🎁💩😜👍🏳️‍🌈");
-    DIS(nye, L"ñññññññ");
-    DIS(hindi, L"अनुच्छेद");
+ 
+    DIS(emojis);
+    DIS(nye);
+    DIS(hindi);
    
-    DIS(zalgo, L"Z͑ͫ̓ͪ̂ͫ̽͏̴̙̤̞͉͚̯̞̠͍A̴̵̜̰͔ͫ͗͢L̠ͨͧͩ͘G̴̻͈͍͔̹̑͗̎̅͛́Ǫ̵̹̻̝̳͂̌̌͘!͖̬̰̙̗̿̋ͥͥ̂ͣ̐́́͜͞");
-    DIS(korean, L"뎌쉐");
-    DIS(diacritics, L"Ĺo͂řȩm̅");
+    DIS(zalgo);
+    DIS(korean);
+    DIS(diacritics);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

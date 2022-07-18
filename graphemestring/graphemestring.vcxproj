@@ -152,6 +152,9 @@
     <ClInclude Include="grapheme.h" />
     <ClInclude Include="utf8proc\utf8proc.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Xml Include="manifest.xml" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
